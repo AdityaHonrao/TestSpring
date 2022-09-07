@@ -5,6 +5,8 @@ import javax.persistence.*;
 @Entity
 public class College {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String collegeName;
@@ -13,8 +15,6 @@ public class College {
         this.id = id;
     }
 
-    @Id
-    @GeneratedValue
     public Long getId() {
         return id;
     }
