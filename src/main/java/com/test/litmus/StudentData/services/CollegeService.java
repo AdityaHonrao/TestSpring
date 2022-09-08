@@ -16,4 +16,6 @@ public interface CollegeService {
     public List<College> filterByName(String name);
 
     public int deleteById(Long id);
+
+    void update(College college);
 }

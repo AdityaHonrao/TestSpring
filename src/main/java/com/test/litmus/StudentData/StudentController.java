@@ -1,39 +1,22 @@
 package com.test.litmus.StudentData;
 
 import com.google.gson.Gson;
-import com.test.litmus.StudentData.entities.College;
 import com.test.litmus.StudentData.entities.Student;
-import com.test.litmus.StudentData.services.CollegeServiceImplementation;
 import com.test.litmus.StudentData.services.StudentServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-public class MainController {
+public class StudentController {
+
 
     @Autowired
     private StudentServiceImplementation studentServiceImplementation;
 
-    @Autowired
-    private CollegeServiceImplementation collegeServiceImplementation;
-
-
-    @PostMapping("/addCollege")
-    public ResponseEntity<HttpStatus> create(@RequestBody College college){
-        try {
-            this.collegeServiceImplementation.add(college);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e){
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @PostMapping("/insertStudent")
+    @PostMapping("/addStudent")
     public ResponseEntity<HttpStatus> createStudent(@RequestBody Student student){
         try {
             this.studentServiceImplementation.add(student);
@@ -44,11 +27,27 @@ public class MainController {
         }
     }
 
-    @GetMapping("/getColleges")
-    public String getCollegeData(){
-        Gson gson = new Gson();
+    @PostMapping("/updateStudent")
+    public ResponseEntity<HttpStatus> updateStudent(@RequestBody Student student){
+        try {
+            this.studentServiceImplementation.update(student);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
-        return gson.toJson(collegeServiceImplementation.getData());
+    @GetMapping("/deleteStudent")
+    public ResponseEntity<HttpStatus> delete(@RequestParam long id){
+
+        try {
+            this.studentServiceImplementation.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/getStudents")

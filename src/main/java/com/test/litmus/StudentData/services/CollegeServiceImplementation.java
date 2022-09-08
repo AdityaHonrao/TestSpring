@@ -45,4 +45,9 @@ public class CollegeServiceImplementation implements CollegeService{
         }
         return 0;
     }
+
+    @Override
+    public void update(College college) {
+        collegeDataDao.save(college);
+    }
 }

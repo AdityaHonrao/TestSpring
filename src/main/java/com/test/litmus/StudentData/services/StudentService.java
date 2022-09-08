@@ -17,4 +17,6 @@ public interface StudentService {
     public List<Student> filterByName(String name);
 
     public int deleteById(Long id);
+
+    public void update(Student student);
 }

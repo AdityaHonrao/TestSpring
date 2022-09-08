@@ -45,4 +45,9 @@ public class StudentServiceImplementation implements StudentService {
         }
         return 0;
     }
+
+    @Override
+    public void update(Student student) {
+        studentDataDao.save(student);
+    }
 }
