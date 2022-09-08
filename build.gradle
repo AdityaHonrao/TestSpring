@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.3'
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 	id 'java'
+	id 'war'
 }
 
 group = 'com.test.litmus'
@@ -19,6 +20,10 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.google.code.gson:gson:2.8.9'
+
+	// https://mvnrepository.com/artifact/com.google.cloud/spring-cloud-gcp-starter-sql-mysql
+	implementation 'com.google.cloud:spring-cloud-gcp-starter-sql-mysql:3.3.0'
+
 }
 
 tasks.named('test') {
