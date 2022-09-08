@@ -1,5 +1,7 @@
 package com.test.litmus.StudentData.entities;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class College {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String collegeName;
 
     public void setId(Long id) {

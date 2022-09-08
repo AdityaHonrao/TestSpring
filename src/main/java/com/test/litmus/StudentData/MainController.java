@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+@CrossOrigin
 @RestController
 public class MainController {
 
@@ -21,7 +22,7 @@ public class MainController {
     private CollegeServiceImplementation collegeServiceImplementation;
 
 
-    @PostMapping("/insertCollege")
+    @PostMapping("/addCollege")
     public ResponseEntity<HttpStatus> create(@RequestBody College college){
         try {
             this.collegeServiceImplementation.add(college);
